@@ -57,6 +57,9 @@ config BOARD_ASUS_F2A85_M
 	bool "ASUS F2A85-M"
 	select BUILD_XMMSTACK
 
+config BOARD_ASUS_H110M_ADP
+	bool "ASUS H110M-ADP"
+
 config BOARD_ASUS_K8V_X
 	bool "ASUS K8V-X"
 	select VIA_ROMSTRAP
@@ -168,6 +171,7 @@ config BOARD_INIT
 	default "intel_d94x.c" if BOARD_INTEL_D945GCLF || BOARD_INTEL_D945GNT || BOARD_INTEL_D946GZIS
 	default "dell_s1850.c" if BOARD_DELL_S1850
 	default "asus_f2a85-m.c" if BOARD_ASUS_F2A85_M
+	default "asus_h110m-adp.c" if BOARD_ASUS_H110M_ADP
 	default "asus_m2v-mx_se.c" if BOARD_ASUS_M2V_MX_SE
 	default "asus_k8v-x.c" if BOARD_ASUS_K8V_X
 	default "msi_ms6178.c" if BOARD_MSI_MS6178
@@ -201,7 +205,7 @@ config BOARD_INIT
 config SOUTHBRIDGE_INIT
 	string
 	default "southbridge/intel-ich7.c" if BOARD_KONTRON_986LCD_M || BOARD_ASROCK_H81M_HDS
-	default "southbridge/intel-sunrise.c" if BOARD_SUPERMICRO_X11SSM_F || BOARD_ACER_ES1_572
+	default "southbridge/intel-sunrise.c" if BOARD_ASUS_H110M_ADP || BOARD_SUPERMICRO_X11SSM_F || BOARD_ACER_ES1_572
 	default "southbridge/amd-sbxxx.c" if BOARD_ASUS_F2A85_M || BOARD_JETWAY_NF81_T56N_LF
 	default "southbridge/amd-sbxxx.c" if BOARD_ASUS_P2_M3A3200
 
@@ -210,7 +214,7 @@ config SUPERIO_INIT
 	default "superio/ite-it8718f.c" if BOARD_ASUS_P2_M3A3200
 	default "superio/winbond-w83627thg.c" if BOARD_KONTRON_986LCD_M
 	default "superio/fintek-f71869ad.c" if BOARD_JETWAY_NF81_T56N_LF
-	default "superio/nuvoton-nct6776.c" if BOARD_ASROCK_H81M_HDS
+	default "superio/nuvoton-nct6776.c" if BOARD_ASROCK_H81M_HDS || BOARD_ASUS_H110M_ADP
 	default "superio/aspeed-ast.c" if BOARD_SUPERMICRO_X11SSM_F
 
 choice
